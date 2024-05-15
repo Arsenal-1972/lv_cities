@@ -1,33 +1,4 @@
---
--- Docs
--- https://www.w3schools.com/sql/default.asp
---
--- Playground:
--- https://sqlfiddle.com/sqlite/online-compiler (MYSQL)
---
-
--- Vārds Uzvārds - 
--- Aleksejs Kaļinkins
--- 1. Izveidot tabulu priekš faila cities.json datiem, izvēloties atbilstošus datu tipus (CREATE)
--- 2. Papildināt tabulu ar datiem no faila (INSERT) (drīkst izmantot konvertētāju https://www.convertsimple.com/convert-json-to-sql-insert-statement/)
--- 3. Atlasīt tikai nosaukumu un novadu kolonnas (SELECT)
--- 4. Atlasīt pilsētas kuras ir vecākas par 100 gadiem (WHERE)
--- 5. Atlasīt pilsētas ar mazāk vai vienādas ar 3501 iedzīvotāju skaitu (WHERE)
--- 6. Atlasīt top 10 lielākas pilsētas pēc iedzīvotāju skaita (LIMIT, ORDER BY)
--- 7. Saskaitīt kopējo latvijas pilsētu skaitu (COUNT)
--- 8. Atlasīt unikālus novada nosaukumus (DISTINCT)
--- 9. Dzēst ierakstu ar pilsētu “Durbe” (DELETE)
--- 10. Atlasīt kopēju iedzīvotāji skaitu pēc novadiem (GROUP BY, COUNT)
-
-CREATE TABLE cities (
- title varchar(100),
- year int,
- population int,
- region varchar(100)
-);
-
-INSERT INTO cities (title, year, population, region) VALUES
-('Ādaži', 2022, 7482, 'Ādažu novads')
+ INSERT INTO TableName(title, year, population, region) VALUES('Ādaži', 2022, 7482, 'Ādažu novads')
 ,('Ainaži', 1926, 701, 'Limbažu novads')
 ,('Aizkraukle', 1967, 7198, 'Aizkraukles novads')
 ,('Aizpute', 1378, 4128, 'Dienvidkurzemes novads')
@@ -108,20 +79,3 @@ INSERT INTO cities (title, year, population, region) VALUES
 ,('Viļaka', 1945, 1245, 'Balvu novads')
 ,('Viļāni', 1928, 2831, 'Rēzeknes novads')
 ,('Zilupe', 1931, 1369, 'Ludzas novads');
-
-SELECT * FROM cities;
-SELECT title, region FROM cities;
-SELECT * FROM cities
-WHERE year < 1925;
-SELECT * FROM cities
-WHERE population <= 3501;
-SELECT * FROM cities 
-ORDER BY population DESC
-LIMIT 10;
-SELECT COUNT(title)
-FROM cities;
-SELECT DISTINCT region FROM cities;
-DELETE FROM cities WHERE title='Durbe';
-SELECT * FROM cities;
-SELECT SUM(population), region FROM cities 
-GROUP BY region;
